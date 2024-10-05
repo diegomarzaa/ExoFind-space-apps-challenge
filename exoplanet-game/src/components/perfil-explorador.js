@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { User, Trophy, Star, Target, Zap, Rocket, Book, Globe, Atom, Brain, Heart } from 'lucide-react'
+import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart } from 'lucide-react'
+import frofilepic from '../img/pfp.png'
 
 export default function Profile() {
   const [stars, setStars] = useState([])
@@ -112,7 +113,7 @@ export default function Profile() {
           {activeTab === 'info' && (
             <div className="text-white">
               <div className="flex items-center justify-center mb-6">
-                <img src="/placeholder.svg?height=100&width=100" alt="Avatar" className="w-24 h-24 rounded-full border-4 border-white" />
+                <img src={frofilepic} alt="Avatar" className="w-24 h-24 rounded-full border-4 border-white" />
                 <div className="ml-6 text-left">
                   <h2 className="text-3xl font-bold">Explorador Alpha</h2>
                   <p className="text-xl">Rango: Capitán Estelar</p>
