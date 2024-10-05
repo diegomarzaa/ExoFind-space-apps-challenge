@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AppMenu from './components/01-App-menu';
 import Perfil from './components/perfil-explorador';
 import Telescopio from './components/telescope';
+import PuzzleGame from './components/puzzle';
 
 function App() {
     return (
@@ -25,12 +26,17 @@ function App() {
                 <button className="px-4 py-2 bg-blue-500 text-white rounded">Telescopio</button>
             </Link>
 
+            <Link to="/puzzle">
+                <button className="px-4 py-2 bg-blue-500 text-white rounded">Puzzle</button>
+            </Link>
+
             {/* OTROS */}
           </nav>
           <Routes>
             <Route path="/menu" element={<AppMenu />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/telescope" element={<Telescopio />} />
+            <Route path="/puzzle" element={<PuzzleGame />} />
             {/* Add more routes for additional slides */}
           </Routes>
         </div>
