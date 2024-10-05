@@ -1,12 +1,70 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart } from 'lucide-react'
+import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
+
+// Definir URLs de imágenes para cada tipo de exoplaneta
+const exoplanetImages = {
+  Terrestres: 'https://via.placeholder.com/100?text=Terrestres',
+  'Super-Terrestres': 'https://via.placeholder.com/100?text=Super-Terrestres',
+  Neptunianos: 'https://via.placeholder.com/100?text=Neptunianos',
+  'Gigantes Gaseosos': 'https://via.placeholder.com/100?text=Gigantes+Gaseosos',
+}
+
+// Definir imágenes para planetas individuales (Placeholder)
+const planetImages = {
+  'Planeta A': 'https://via.placeholder.com/80?text=Planeta+A',
+  'Planeta B': 'https://via.placeholder.com/80?text=Planeta+B',
+  'Planeta C': 'https://via.placeholder.com/80?text=Planeta+C',
+  'Planeta D': 'https://via.placeholder.com/80?text=Planeta+D',
+  'Planeta E': 'https://via.placeholder.com/80?text=Planeta+E',
+  'Planeta F': 'https://via.placeholder.com/80?text=Planeta+F',
+  'Planeta G': 'https://via.placeholder.com/80?text=Planeta+G',
+  'Planeta H': 'https://via.placeholder.com/80?text=Planeta+H',
+  'Planeta I': 'https://via.placeholder.com/80?text=Planeta+I',
+  'Planeta J': 'https://via.placeholder.com/80?text=Planeta+J',
+  'Planeta K': 'https://via.placeholder.com/80?text=Planeta+K',
+  'Planeta L': 'https://via.placeholder.com/80?text=Planeta+L',
+  'Planeta M': 'https://via.placeholder.com/80?text=Planeta+M',
+  'Planeta N': 'https://via.placeholder.com/80?text=Planeta+N',
+  'Planeta O': 'https://via.placeholder.com/80?text=Planeta+O',
+  'Planeta P': 'https://via.placeholder.com/80?text=Planeta+P',
+  'Planeta Q': 'https://via.placeholder.com/80?text=Planeta+Q',
+  'Planeta R': 'https://via.placeholder.com/80?text=Planeta+R',
+  'Planeta S': 'https://via.placeholder.com/80?text=Planeta+S',
+  'Planeta T': 'https://via.placeholder.com/80?text=Planeta+T',
+  'Planeta U': 'https://via.placeholder.com/80?text=Planeta+U',
+  'Planeta V': 'https://via.placeholder.com/80?text=Planeta+V',
+  'Planeta W': 'https://via.placeholder.com/80?text=Planeta+W',
+  'Planeta X': 'https://via.placeholder.com/80?text=Planeta+X',
+  'Planeta Y': 'https://via.placeholder.com/80?text=Planeta+Y',
+  'Planeta Z': 'https://via.placeholder.com/80?text=Planeta+Z',
+  'Planeta AA': 'https://via.placeholder.com/80?text=Planeta+AA',
+  'Planeta AB': 'https://via.placeholder.com/80?text=Planeta+AB',
+  'Planeta AC': 'https://via.placeholder.com/80?text=Planeta+AC',
+  'Planeta AD': 'https://via.placeholder.com/80?text=Planeta+AD',
+  'Planeta AE': 'https://via.placeholder.com/80?text=Planeta+AE',
+  'Planeta AF': 'https://via.placeholder.com/80?text=Planeta+AF',
+  'Planeta AG': 'https://via.placeholder.com/80?text=Planeta+AG',
+  'Planeta AH': 'https://via.placeholder.com/80?text=Planeta+AH',
+  'Planeta AI': 'https://via.placeholder.com/80?text=Planeta+AI',
+  'Planeta AJ': 'https://via.placeholder.com/80?text=Planeta+AJ',
+  'Planeta AK': 'https://via.placeholder.com/80?text=Planeta+AK',
+  'Planeta AL': 'https://via.placeholder.com/80?text=Planeta+AL',
+  'Planeta AM': 'https://via.placeholder.com/80?text=Planeta+AM',
+  'Planeta AN': 'https://via.placeholder.com/80?text=Planeta+AN',
+  'Planeta AO': 'https://via.placeholder.com/80?text=Planeta+AO',
+  'Planeta AP': 'https://via.placeholder.com/80?text=Planeta+AP',
+  'Planeta AQ': 'https://via.placeholder.com/80?text=Planeta+AQ',
+  'Planeta AR': 'https://via.placeholder.com/80?text=Planeta+AR',
+  'Planeta AS': 'https://via.placeholder.com/80?text=Planeta+AS',
+}
 
 export default function Profile() {
   const [stars, setStars] = useState([])
   const [activeTab, setActiveTab] = useState('info')
   const [showLevelUpModal, setShowLevelUpModal] = useState(false)
+  const [expandedDiscoveries, setExpandedDiscoveries] = useState({}) // Mapeo de tipos a estados de expansión
 
   useEffect(() => {
     const generateStars = () => {
@@ -20,14 +78,6 @@ export default function Profile() {
     }
     setStars(generateStars())
   }, [])
-
-  const missions = [
-    { name: "Explorador Novato", description: "Completa tu primera misión de exploración", progress: 100, reward: "100 XP" },
-    { name: "Cartógrafo Estelar", description: "Mapea 5 sistemas estelares", progress: 60, reward: "500 XP" },
-    { name: "Diplomático Galáctico", description: "Establece alianzas con 3 especies alienígenas", progress: 33, reward: "1000 XP" },
-    { name: "Piloto Experto", description: "Completa 10 maniobras de vuelo avanzadas", progress: 70, reward: "750 XP" },
-    { name: "Científico Cuántico", description: "Descifra los misterios de un agujero negro", progress: 20, reward: "2000 XP" }
-  ]
 
   const achievements = [
     { name: "Primer Contacto", description: "Descubre una nueva forma de vida", icon: Star, obtained: true },
@@ -50,6 +100,95 @@ export default function Profile() {
     { name: "Diplomacia Diaria", description: "Interactúa con 2 especies alienígenas", reward: "30 XP", completed: true },
     { name: "Estudio Estelar", description: "Analiza 5 estrellas diferentes", reward: "40 XP", completed: false }
   ]
+
+  // Datos para Descubrimientos incluyendo planetas
+  const discoveries = [
+    { 
+      type: "Terrestres", 
+      image: exoplanetImages.Terrestres, 
+      total: 10, 
+      unlocked: 7,
+      planets: [
+        { name: "Planeta A", info: "Un planeta rocoso similar a la Tierra.", unlocked: true },
+        { name: "Planeta B", info: "Con atmósfera densa y múltiples océanos.", unlocked: true },
+        { name: "Planeta C", info: "Ubicado en la zona habitable de su estrella.", unlocked: true },
+        { name: "Planeta D", info: "Posee una luna gigante.", unlocked: true },
+        { name: "Planeta E", info: "Tiene signos de actividad geológica.", unlocked: true },
+        { name: "Planeta F", info: "Presenta variaciones climáticas extremas.", unlocked: true },
+        { name: "Planeta G", info: "Cuenta con sistemas de vida alienígena.", unlocked: true },
+        { name: "Planeta H", info: "Área de biodiversidad excepcional.", unlocked: false },
+        { name: "Planeta I", info: "Rodeado por un anillo luminoso.", unlocked: false },
+        { name: "Planeta J", info: "Centro de investigaciones científicas.", unlocked: false },
+      ]
+    },
+    { 
+      type: "Super-Terrestres", 
+      image: exoplanetImages['Super-Terrestres'], 
+      total: 8, 
+      unlocked: 5,
+      planets: [
+        { name: "Planeta K", info: "Tamaño mayor que la Tierra pero con condiciones habitables.", unlocked: true },
+        { name: "Planeta L", info: "Posee múltiples continentes flotantes.", unlocked: true },
+        { name: "Planeta M", info: "Con aire respirable pero con temperaturas elevadas.", unlocked: true },
+        { name: "Planeta N", info: "Tierra doble en un sistema binario.", unlocked: true },
+        { name: "Planeta O", info: "Con actividad volcánica intensa.", unlocked: true },
+        { name: "Planeta P", info: "Zona de migración de especies avanzadas.", unlocked: false },
+        { name: "Planeta Q", info: "Techo de cristal natural en su atmósfera.", unlocked: false },
+        { name: "Planeta R", info: "Recursos minerales invaluables.", unlocked: false },
+      ]
+    },
+    { 
+      type: "Neptunianos", 
+      image: exoplanetImages.Neptunianos, 
+      total: 12, 
+      unlocked: 9,
+      planets: [
+        { name: "Planeta S", info: "Composición principalmente de hielo y gas.", unlocked: true },
+        { name: "Planeta T", info: "Tierra gaseosa con tormentas electrostáticas.", unlocked: true },
+        { name: "Planeta U", info: "Posee un sistema de anillos espectacular.", unlocked: true },
+        { name: "Planeta V", info: "Con océanos de amoníaco líquido.", unlocked: true },
+        { name: "Planeta W", info: "Ubicado en la periferia de su galaxia.", unlocked: true },
+        { name: "Planeta X", info: "Con múltiples lunas heladas.", unlocked: true },
+        { name: "Planeta Y", info: "Sistema meteorológico único y complejo.", unlocked: true },
+        { name: "Planeta Z", info: "Reserva de energías renovables extraterrestres.", unlocked: true },
+        { name: "Planeta AA", info: "Cúpulas geodésicas naturales en la superficie.", unlocked: false },
+        { name: "Planeta AB", info: "Con hendiduras minerales profundas.", unlocked: false },
+        { name: "Planeta AC", info: "Zona de investigación científica avanzada.", unlocked: false },
+        { name: "Planeta AD", info: "Refugio de especies acuáticas inteligentes.", unlocked: false },
+      ]
+    },
+    { 
+      type: "Gigantes Gaseosos", 
+      image: exoplanetImages['Gigantes Gaseosos'], 
+      total: 15, 
+      unlocked: 10,
+      planets: [
+        { name: "Planeta AE", info: "Enorme planeta con capas de gas iridiscentes.", unlocked: true },
+        { name: "Planeta AF", info: "Con sistemas de coloraciones atmosféricas cambiantes.", unlocked: true },
+        { name: "Planeta AG", info: "Posee una estación espacial natural en sus nubes.", unlocked: true },
+        { name: "Planeta AH", info: "Con internalización de torres de energía.", unlocked: true },
+        { name: "Planeta AI", info: "Presencia de gigantescas tormentas eléctricas.", unlocked: true },
+        { name: "Planeta AJ", info: "Órbita cercana a una estrella de neutrones.", unlocked: true },
+        { name: "Planeta AK", info: "Con múltiples anillos compuestos por partículas de hielo.", unlocked: true },
+        { name: "Planeta AL", info: "Centro de nexos energéticos interplanetarios.", unlocked: true },
+        { name: "Planeta AM", info: "Habitat de criaturas aéreas prehistóricas.", unlocked: true },
+        { name: "Planeta AN", info: "Reservorio de materiales de construcción avanzados.", unlocked: true },
+        { name: "Planeta AO", info: "Conducción de estudios atmosféricos profundos.", unlocked: false },
+        { name: "Planeta AP", info: "Base de investigaciones arqueológicas extraterrestres.", unlocked: false },
+        { name: "Planeta AQ", info: "Infraestructura energética autosostenible.", unlocked: false },
+        { name: "Planeta AR", info: "Área de terapias climáticas intergalácticas.", unlocked: false },
+        { name: "Planeta AS", info: "Núcleo de investigación de tecnologías cuánticas.", unlocked: false },
+      ]
+    },
+  ]
+
+  // Función para alternar la expansión de una categoría de descubrimientos
+  const toggleExpansion = (type) => {
+    setExpandedDiscoveries(prevState => ({
+      ...prevState,
+      [type]: !prevState[type]
+    }))
+  }
 
   return (
     <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
@@ -97,7 +236,7 @@ export default function Profile() {
           className="bg-black bg-opacity-50 p-8 rounded-lg border border-white border-opacity-20"
         >
           <div className="flex justify-center space-x-4 mb-8">
-            {['info', 'misiones', 'logros', 'habilidades', 'desafíos'].map((tab) => (
+            {['info', 'logros', 'habilidades', 'desafíos', 'descubrimientos'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -141,30 +280,6 @@ export default function Profile() {
                   <p className="text-lg">Años Luz Viajados</p>
                 </div>
               </div>
-            </div>
-          )}
-
-          {activeTab === 'misiones' && (
-            <div className="space-y-4">
-              {missions.map((mission, index) => (
-                <motion.div
-                  key={mission.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white bg-opacity-10 p-4 rounded-lg"
-                >
-                  <h3 className="text-xl font-bold text-white">{mission.name}</h3>
-                  <p className="text-gray-300 mb-2">{mission.description}</p>
-                  <div className="w-full bg-gray-700 rounded-full h-2.5">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${mission.progress}%` }}></div>
-                  </div>
-                  <div className="flex justify-between items-center mt-2">
-                    <p className="text-gray-300">{mission.progress}% completado</p>
-                    <p className="text-yellow-300">Recompensa: {mission.reward}</p>
-                  </div>
-                </motion.div>
-              ))}
             </div>
           )}
 
@@ -248,6 +363,105 @@ export default function Profile() {
               ))}
             </div>
           )}
+
+          {activeTab === 'descubrimientos' && (
+            <div className="space-y-6">
+              {discoveries.map((discovery, index) => (
+                <motion.div
+                  key={discovery.type}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  className="flex flex-col bg-white bg-opacity-10 p-4 rounded-lg"
+                >
+                  {/* Header con Imagen y Tipo */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img src={discovery.image} alt={discovery.type} className="w-20 h-20 rounded-full mr-6" />
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">{discovery.type}</h3>
+                        <p className="text-gray-300">{discovery.unlocked} de {discovery.total} planetas desbloqueados</p>
+                        {/* Barra de Progreso */}
+                        <div className="w-full bg-gray-700 rounded-full h-3 mt-1">
+                          <div 
+                            className="bg-green-500 h-3 rounded-full" 
+                            style={{ width: `${(discovery.unlocked / discovery.total) * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Botón para Expandir/Colapsar */}
+                    <button
+                      onClick={() => toggleExpansion(discovery.type)}
+                      className="text-white text-xl font-semibold px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors"
+                    >
+                      {expandedDiscoveries[discovery.type] ? 'Ocultar' : 'Mostrar'}
+                    </button>
+                  </div>
+
+                  {/* Lista de Planetas (Expandible en Grid) */}
+                  <AnimatePresence>
+                    {expandedDiscoveries[discovery.type] && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+                      >
+                        {discovery.planets.map((planet, pIndex) => (
+                          <motion.div
+                            key={planet.name}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: pIndex * 0.05 }}
+                            className="relative bg-white bg-opacity-20 rounded-lg overflow-hidden cursor-pointer"
+                          >
+                            {/* Imagen o Indicador de Bloqueo */}
+                            {planet.unlocked ? (
+                              <img src={planetImages[planet.name] || 'https://via.placeholder.com/80?text=Planeta'} alt={planet.name} className="w-full h-32 object-cover" />
+                            ) : (
+                              <div className="w-full h-32 bg-gray-700 flex items-center justify-center">
+                                <Lock className="w-8 h-8 text-gray-300" />
+                              </div>
+                            )}
+
+                            {/* Overlay de Información en Hover */}
+                            {planet.unlocked && (
+                              <motion.div
+                                className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center p-2 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                                whileHover={{ opacity: 1 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0 }}
+                              >
+                                <h4 className="text-lg font-bold text-white">{planet.name}</h4>
+                                <p className="text-sm text-gray-300 mb-2">{planet.info}</p>
+                                <button className="px-3 py-1 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+                                  Aprender Más
+                                </button>
+                              </motion.div>
+                            )}
+
+                            {/* Indicador para Planetas Bloqueados */}
+                            {!planet.unlocked && (
+                              <motion.div
+                                className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                                whileHover={{ opacity: 0.8 }}
+                                initial={{ opacity: 0.5 }}
+                              >
+                                <p className="text-white text-lg">???</p>
+                              </motion.div>
+                            )}
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
         </motion.div>
       </div>
 
