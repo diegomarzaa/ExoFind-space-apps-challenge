@@ -1,12 +1,6 @@
-
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Slide1 from './components/Slide1';
-import Slide2 from './components/Slide2';
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Settings, User, Trophy, HelpCircle, Volume2 } from 'lucide-react';
-import { FaRocket } from 'react-icons/fa'; // Adding a rocket icon for extra flair
 import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
 
 export default function ExoplanetExploration() {
@@ -54,40 +48,30 @@ export default function ExoplanetExploration() {
 
       {/* Content */}
       <div className="z-10 text-center space-y-12 px-4">
-        {/* Title with Enhanced Animation */}
+        {/* Title with White Color */}
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: 'backOut' }}
-          className="text-6xl md:text-8xl font-extrabold text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent mb-12"
+          className="text-6xl md:text-8xl font-extrabold text-white mb-12"
           style={{ fontFamily: "'Orbitron', sans-serif" }}
         >
-          Exoplanet Exploration
+          Exploración de Exoplanetas
         </motion.h1>
 
-        {/* Rocket Icon Animation */}
-        <motion.div
-          className="flex justify-center mb-16"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <FaRocket className="text-white animate-bounce-slow" size={50} />
-        </motion.div>
+        {/* Removed Rocket Icon Animation */}
 
-        {/* Main Action Button */}
+        {/* Main Action Button (Styled like Menu 1's Button) */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <button
-            className="relative text-4xl font-bold py-5 px-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-indigo-600 hover:to-blue-500 transition-all duration-500 rounded-full shadow-lg transform hover:scale-105"
+            className="text-5xl font-bold py-6 px-24 bg-transparent border-4 border-white text-white hover:bg-white hover:text-black transition-all duration-300 rounded-full tracking-widest"
             style={{ fontFamily: "'Orbitron', sans-serif" }}
           >
-            LAUNCH
-            {/* Glowing Effect */}
-            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 blur-xl"></span>
+            JUGAR
           </button>
         </motion.div>
 
@@ -120,11 +104,6 @@ export default function ExoplanetExploration() {
 
       {/* Additional Styles for Glowing Effects and Animations */}
       <style jsx>{`
-        .text-gradient {
-          background: linear-gradient(90deg, #7f00ff, #e100ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
         @keyframes bounce-slow {
           0%, 100% {
             transform: translateY(0);
