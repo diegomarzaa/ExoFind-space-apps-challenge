@@ -51,15 +51,8 @@ export default function PlanetarySystem() {
   }));
 
   return (
-    <div
-      className="w-full h-screen flex items-center justify-center overflow-hidden relative"
-      style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')", // Replace with your background image
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Background Stars */}
+    <div className="w-full h-screen bg-black flex items-center justify-center overflow-hidden relative">
+      {/* Starry Background */}
       {stars.map((star) => (
         <Star
           key={star.id}
@@ -72,50 +65,59 @@ export default function PlanetarySystem() {
         />
       ))}
 
-      {/* Central Holder for Suns and Orbit */}
-      <div className="relative w-80 h-80 rounded-full flex items-center justify-center">
-        {/* Eclipse Sun Positioned on Orbit Path */}
-        <Sun className="top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+      {/* Telescope POV Simulation */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        {/* Outer Frame of Telescope */}
+        <div className="w-96 h-96 rounded-full border-4 border-white-800 bg-black bg-opacity-0 flex items-center justify-center shadow-2xl">
+          {/* Inner Viewfinder */}
+          <div className="w-5/6 h-5/6 rounded-full bg-green overflow-hidden">
+            {/* Planetary System Container */}
+            <div className="relative w-full h-full">
+              {/* Eclipse Sun Positioned on Orbit Path */}
+              <Sun className="top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
 
-        {/* Other Suns Positioned Off Orbit Path */}
-        <Sun className="absolute top-1/4 left-1/4 transform translate-x-1/2 translate-y-1/2" />
-        <Sun className="absolute bottom-1/4 left-1/4 transform -translate-x-1/2 translate-y-1/2" />
-        <Sun className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2" />
+              {/* Other Suns Positioned Off Orbit Path */}
+              <Sun className="absolute top-1/4 left-1/4 transform translate-x-1/2 translate-y-1/2" />
+              <Sun className="absolute bottom-1/4 left-1/4 transform -translate-x-1/2 translate-y-1/2" />
+              <Sun className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2" />
 
-        {/* Rotating Container for Orbit */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{
-            repeat: Infinity,
-            duration: ORBIT_DURATION,
-            ease: "linear",
-          }}
-          className="absolute inset-0"
-          style={{ transformOrigin: "50% 50%" }}
-        >
-          {/* Planet */}
-          <motion.div
-            className="absolute top-1/4 right-0 w-9 h-9 bg-blue-400 rounded-full shadow-lg z-40"
-            // Initial Position
-            style={{
-              transform: "translate(50%, -50%)",
-            }}
-            // Animate Opacity and Scale for Eclipse Effect
-            animate={{
-              opacity: [0.01, 0.01, 0.9, 0.01, 0.01],
-              scale: [1.8, 1.8, 1.8, 1.8, 1.8],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: ORBIT_DURATION,
-              ease: "linear",
-              times: [0, 0.75, 0.8, 0.95, 1], // Synchronize with eclipse sun passage
-            }}
-          />
-        </motion.div>
+              {/* Rotating Container for Orbit */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  repeat: Infinity,
+                  duration: ORBIT_DURATION,
+                  ease: "linear",
+                }}
+                className="absolute inset-0"
+                style={{ transformOrigin: "50% 50%" }}
+              >
+                {/* Planet */}
+                <motion.div
+                  className="absolute top-1/4 right-0 w-9 h-9 bg-blue-400 rounded-full shadow-lg z-40"
+                  // Initial Position
+                  style={{
+                    transform: "translate(50%, -50%)",
+                  }}
+                  // Animate Opacity and Scale for Eclipse Effect
+                  animate={{
+                    opacity: [0.01, 0.01, 0.7, 0.01, 0.01],
+                    scale: [1.8, 1.8, 1.8, 1.8, 1.8],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: ORBIT_DURATION,
+                    ease: "linear",
+                    times: [0, 0.75, 0.8, 0.85, 1], // Synchronize with eclipse sun passage
+                  }}
+                />
+              </motion.div>
 
-        {/* Orbit Path (Optional Visual Aid) */}
-        {/* <div className="absolute inset-0 rounded-full border border-dashed border-indigo-700" /> */}
+              {/* Optional Orbit Path Visually */}
+              {/* <div className="absolute inset-0 rounded-full border border-dashed border-indigo-700" /> */}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
