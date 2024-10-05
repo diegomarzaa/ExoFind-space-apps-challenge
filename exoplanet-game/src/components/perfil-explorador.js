@@ -1,3 +1,5 @@
+// TODO: Skins y naves espaciales seccion
+
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle, XCircle } from 'lucide-react'
@@ -476,7 +478,7 @@ export default function Profile() {
                                 <p className="text-sm text-gray-300 mb-2">{planet.info}</p>
                                 <button 
                                   className="px-3 py-1 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
-                                  onClick={() => alert(`Aprender más sobre ${planet.name}`)} // Reemplaza con lógica real
+                                  onClick={() => alert(`Aprender más sobre ${planet.name}`)} // TODO: Implementar lógica real
                                 >
                                   Aprender Más
                                 </button>
