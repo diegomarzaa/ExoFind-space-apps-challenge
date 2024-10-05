@@ -1,41 +1,69 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import React from "react";
 
-export default function Component() {
-  const [isEclipsing, setIsEclipsing] = useState(false)
+// Sun Component for Reusability
+const Sun = ({ className }) => (
+  <div
+    className={`w-12 h-12 bg-yellow-400 rounded-full ${className}`}
+    style={{
+      boxShadow: "0 0 20px 10px rgba(255, 223, 0, 0.5)",
+      position: "absolute",
+    }}
+  />
+);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsEclipsing(true), 2000)
-    return () => clearTimeout(timer)
-  }, [])
+export default function PlanetarySystem() {
+  const ORBIT_DURATION = 8; // Duration for one full orbit in seconds
 
   return (
-    <div className="w-full h-screen bg-black flex items-center justify-center">
-      <div className="relative w-80 h-80 rounded-full bg-gray-900 border-4 border-gray-700 overflow-hidden">
-        {/* Estrellas de fondo (aumentamos el tamaño) */}
+    <div className="w-full h-screen bg-gradient-to-b from-indigo-900 to-black flex items-center justify-center overflow-hidden">
+      {/* Central Holder for Suns and Orbit */}
+      <div className="relative w-80 h-80 rounded-full flex items-center justify-center">
+        {/* Eclipse Sun Positioned on Orbit Path */}
+        <Sun className="top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+
+        {/* Other Suns Positioned Off Orbit Path */}
+        <Sun className="absolute top-1/4 left-1/4 transform translate-x-1/2 translate-y-1/2" />
+        <Sun className="absolute bottom-1/4 left-1/4 transform -translate-x-1/2 translate-y-1/2" />
+        <Sun className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2" />
+
+        {/* Rotating Container for Orbit */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-10 h-10 rounded-full bg-yellow-200"
-          animate={{ opacity: isEclipsing ? 0.6 : 1 }}
-          transition={{ duration: 2 }}
-        />
-        <div className="absolute top-1/2 left-1/2 w-8 h-8 rounded-full bg-yellow-200" />
-        <div className="absolute bottom-1/4 left-1/3 w-8 h-8 rounded-full bg-yellow-200" />
-        <div className="absolute bottom-1/3 right-1/4 w-8 h-8 rounded-full bg-yellow-200" />
+          animate={{ rotate: 360 }}
+          transition={{
+            repeat: Infinity,
+            duration: ORBIT_DURATION,
+            ease: "linear",
+          }}
+          className="absolute inset-0"
+          style={{ transformOrigin: "50% 50%" }}
+        >
+          {/* Planet */}
+          <motion.div
+            className="absolute top-1/4 right-0 w-9 h-9 bg-blue-400 rounded-full shadow-lg z-40"
+            // Initial Position
+            style={{
+              transform: "translate(50%, -50%)",
+            }}
+            // Animate Opacity and Scale for Eclipse Effect
+            animate={{
+              opacity: [1, 1, 1, 1],
+              scale: [1.8, 1.8, 1.8, 1.8],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: ORBIT_DURATION,
+              ease: "linear",
+              times: [0, 0.24, 0.25, 1], // Synchronize with eclipse sun passage
+            }}
+          />
+        </motion.div>
 
-        {/* Planeta (más pequeño que las estrellas y sigue su recorrido) */}
-        <motion.div
-        className="absolute w-6 h-6 rounded-full bg-gray-800 opacity-80"
-        initial={{ top: "10%", left: "-10%" }}
-        animate={{ top: "30%", left: "110%" }}  // El planeta ahora sigue moviéndose fuera de la pantalla
-        transition={{ duration: 6, ease: "linear", delay: 2 }}  // Ajustamos la duración para que el movimiento sea más continuo
-        />
-
-
-        {/* Efecto de viñeta */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black opacity-50" />
+        {/* Orbit Path (Optional Visual Aid) */}
+        {/* <div className="absolute inset-0 rounded-full border border-dashed border-indigo-700" /> */}
       </div>
     </div>
-  )
+  );
 }
