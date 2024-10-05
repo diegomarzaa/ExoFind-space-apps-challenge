@@ -49,14 +49,14 @@ export default function PlanetarySystem() {
             }}
             // Animate Opacity and Scale for Eclipse Effect
             animate={{
-              opacity: [1, 1, 1, 1],
-              scale: [1.8, 1.8, 1.8, 1.8],
+              opacity: [0.01, 0.01, 0.7, 0.01, 0.01],
+              scale: [1.8, 1.8, 1.8, 1.8, 1.8],
             }}
             transition={{
               repeat: Infinity,
               duration: ORBIT_DURATION,
               ease: "linear",
-              times: [0, 0.24, 0.25, 1], // Synchronize with eclipse sun passage
+              times: [0, 0.75, 0.8, 0.95, 1], // Synchronize with eclipse sun passage
             }}
           />
         </motion.div>
