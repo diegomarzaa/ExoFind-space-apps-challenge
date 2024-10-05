@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock } from 'lucide-react'
+import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle, XCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
 
 // Definir URLs de imágenes para cada tipo de exoplaneta
@@ -65,6 +65,11 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState('info')
   const [showLevelUpModal, setShowLevelUpModal] = useState(false)
   const [expandedDiscoveries, setExpandedDiscoveries] = useState({}) // Mapeo de tipos a estados de expansión
+  const [dailyChallenges, setDailyChallenges] = useState([
+    { name: "Exploración Rápida", description: "Visita 3 nuevos planetas hoy", reward: "50 XP", completed: false },
+    { name: "Diplomacia Diaria", description: "Interactúa con 2 especies alienígenas", reward: "30 XP", completed: true },
+    { name: "Estudio Estelar", description: "Analiza 5 estrellas diferentes", reward: "40 XP", completed: false }
+  ])
 
   useEffect(() => {
     const generateStars = () => {
@@ -93,12 +98,6 @@ export default function Profile() {
     { name: "Ciencia", level: 8, icon: Atom, color: "text-green-400" },
     { name: "Exploración", level: 6, icon: Globe, color: "text-yellow-400" },
     { name: "Estrategia", level: 4, icon: Brain, color: "text-purple-400" }
-  ]
-
-  const dailyChallenges = [
-    { name: "Exploración Rápida", description: "Visita 3 nuevos planetas hoy", reward: "50 XP", completed: false },
-    { name: "Diplomacia Diaria", description: "Interactúa con 2 especies alienígenas", reward: "30 XP", completed: true },
-    { name: "Estudio Estelar", description: "Analiza 5 estrellas diferentes", reward: "40 XP", completed: false }
   ]
 
   // Datos para Descubrimientos incluyendo planetas
@@ -190,6 +189,18 @@ export default function Profile() {
     }))
   }
 
+  // Función para completar un desafío
+  const completeChallenge = (challengeName) => {
+    setDailyChallenges(prevChallenges => 
+      prevChallenges.map(challenge => 
+        challenge.name === challengeName ? { ...challenge, completed: true } : challenge
+      )
+    )
+  }
+
+  // Contar los desafíos pendientes
+  const pendingChallenges = dailyChallenges.filter(challenge => !challenge.completed).length
+
   return (
     <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
       {/* Starfield Background with Twinkling Effect */}
@@ -235,20 +246,28 @@ export default function Profile() {
           transition={{ duration: 0.5 }}
           className="bg-black bg-opacity-50 p-8 rounded-lg border border-white border-opacity-20"
         >
+          {/* Navegación de Pestañas */}
           <div className="flex justify-center space-x-4 mb-8">
             {['info', 'logros', 'habilidades', 'desafíos', 'descubrimientos'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`text-white text-lg font-semibold px-4 py-2 rounded-full transition-all duration-300 ${
+                className={`relative text-white text-lg font-semibold px-4 py-2 rounded-full transition-all duration-300 ${
                   activeTab === tab ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
                 }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {/* Badge para "Desafíos" */}
+                {tab === 'desafíos' && pendingChallenges > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    {pendingChallenges}
+                  </span>
+                )}
               </button>
             ))}
           </div>
 
+          {/* Contenido de Pestañas */}
           {activeTab === 'info' && (
             <div className="text-white">
               <div className="flex items-center justify-center mb-6">
@@ -336,30 +355,49 @@ export default function Profile() {
           {activeTab === 'desafíos' && (
             <div className="space-y-4">
               {dailyChallenges.map((challenge, index) => (
-                <motion.div
-                  key={challenge.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`p-4 rounded-lg flex items-center ${
-                    challenge.completed ? 'bg-green-600 bg-opacity-20' : 'bg-white bg-opacity-10'
-                  }`}
-                >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white">{challenge.name}</h3>
-                    <p className="text-gray-300">{challenge.description}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-yellow-300">{challenge.reward}</p>
-                    {challenge.completed ? (
-                      <span className="text-green-400">Completado</span>
-                    ) : (
-                      <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors">
-                        Completar
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
+                <AnimatePresence key={challenge.name}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`p-4 rounded-lg flex items-center ${
+                      challenge.completed ? 'bg-green-600 bg-opacity-20' : 'bg-white bg-opacity-10'
+                    }`}
+                  >
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white">{challenge.name}</h3>
+                      <p className="text-gray-300">{challenge.description}</p>
+                    </div>
+                    <div className="text-right flex items-center">
+                      <p className="text-yellow-300 mr-4">{challenge.reward}</p>
+                      {challenge.completed ? (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                          className="flex items-center text-green-400"
+                        >
+                          <CheckCircle className="w-6 h-6 mr-1" />
+                          <span className="font-semibold">Completado</span>
+                        </motion.div>
+                      ) : (
+                        <button
+                          onClick={() => completeChallenge(challenge.name)}
+                          className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
+                        >
+                          Completar
+                          <motion.div
+                            whileTap={{ scale: 0.9 }}
+                            className="ml-2"
+                          >
+                            <Zap className="w-5 h-5 inline" />
+                          </motion.div>
+                        </button>
+                      )}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               ))}
             </div>
           )}
@@ -436,7 +474,10 @@ export default function Profile() {
                               >
                                 <h4 className="text-lg font-bold text-white">{planet.name}</h4>
                                 <p className="text-sm text-gray-300 mb-2">{planet.info}</p>
-                                <button className="px-3 py-1 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+                                <button 
+                                  className="px-3 py-1 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
+                                  onClick={() => alert(`Aprender más sobre ${planet.name}`)} // Reemplaza con lógica real
+                                >
                                   Aprender Más
                                 </button>
                               </motion.div>
