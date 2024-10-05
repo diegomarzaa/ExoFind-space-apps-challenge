@@ -4,6 +4,7 @@ import AppMenu from './components/01-App-menu';
 import Perfil from './components/perfil-explorador';
 import Telescopio from './components/telescope';
 import PuzzleGame from './components/puzzle';
+import OrbitaPlaneta from './components/orbita_planetaria';
 
 function App() {
     return (
@@ -30,6 +31,10 @@ function App() {
                 <button className="px-4 py-2 bg-blue-500 text-white rounded">Puzzle</button>
             </Link>
 
+            <Link to="/orbita">
+                <button className="px-4 py-2 bg-blue-500 text-white rounded">Orbita</button>
+            </Link>
+
             {/* OTROS */}
           </nav>
           <Routes>
@@ -37,6 +42,7 @@ function App() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/telescope" element={<Telescopio />} />
             <Route path="/puzzle" element={<PuzzleGame />} />
+            <Route path="/orbita" element={<OrbitaPlaneta />} />
             {/* Add more routes for additional slides */}
           </Routes>
         </div>
