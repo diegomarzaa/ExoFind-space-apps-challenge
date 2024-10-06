@@ -4,18 +4,23 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle, XCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
+import terrestreImg from '../img/terrestre.png'
+import terrestreImgZ from '../img/terrestreZoom.png'
+import superterrestreImg from '../img/superterrestre.png'
+import neptunianoImg from '../img/neptunianos.png'
+import giganteGaseosoImg from '../img/gaseoso.jpg'
 
 // Definir URLs de imágenes para cada tipo de exoplaneta
 const exoplanetImages = {
-  Terrestres: 'https://via.placeholder.com/100?text=Terrestres',
-  'Super-Terrestres': 'https://via.placeholder.com/100?text=Super-Terrestres',
-  Neptunianos: 'https://via.placeholder.com/100?text=Neptunianos',
-  'Gigantes Gaseosos': 'https://via.placeholder.com/100?text=Gigantes+Gaseosos',
+  'Terrestres': terrestreImg,
+  'Super-Terrestres': superterrestreImg,
+  'Neptunianos': neptunianoImg,
+  'Gigantes Gaseosos': giganteGaseosoImg,
 }
 
 // Definir imágenes para planetas individuales (Placeholder)
 const planetImages = {
-  'Planeta A': 'https://via.placeholder.com/80?text=Planeta+A',
+  'KEPLER 452-B': terrestreImgZ,
   'Planeta B': 'https://via.placeholder.com/80?text=Planeta+B',
   'Planeta C': 'https://via.placeholder.com/80?text=Planeta+C',
   'Planeta D': 'https://via.placeholder.com/80?text=Planeta+D',
@@ -108,15 +113,15 @@ export default function Profile() {
       type: "Terrestres", 
       image: exoplanetImages.Terrestres, 
       total: 10, 
-      unlocked: 7,
+      unlocked: 1,
       planets: [
-        { name: "Planeta A", info: "Un planeta rocoso similar a la Tierra.", unlocked: true },
-        { name: "Planeta B", info: "Con atmósfera densa y múltiples océanos.", unlocked: true },
-        { name: "Planeta C", info: "Ubicado en la zona habitable de su estrella.", unlocked: true },
-        { name: "Planeta D", info: "Posee una luna gigante.", unlocked: true },
-        { name: "Planeta E", info: "Tiene signos de actividad geológica.", unlocked: true },
-        { name: "Planeta F", info: "Presenta variaciones climáticas extremas.", unlocked: true },
-        { name: "Planeta G", info: "Cuenta con sistemas de vida alienígena.", unlocked: true },
+        { name: "KEPLER 452-B", info: "Orbita una estrella similar a nuestro sol en la zona habitable, podría existir agua líquida.", unlocked: true },
+        { name: "Planeta B", info: "Con atmósfera densa y múltiples océanos.", unlocked: false },
+        { name: "Planeta C", info: "Ubicado en la zona habitable de su estrella.", unlocked: false },
+        { name: "Planeta D", info: "Posee una luna gigante.", unlocked: false },
+        { name: "Planeta E", info: "Tiene signos de actividad geológica.", unlocked: false },
+        { name: "Planeta F", info: "Presenta variaciones climáticas extremas.", unlocked: false },
+        { name: "Planeta G", info: "Cuenta con sistemas de vida alienígena.", unlocked: false },
         { name: "Planeta H", info: "Área de biodiversidad excepcional.", unlocked: false },
         { name: "Planeta I", info: "Rodeado por un anillo luminoso.", unlocked: false },
         { name: "Planeta J", info: "Centro de investigaciones científicas.", unlocked: false },
@@ -126,7 +131,7 @@ export default function Profile() {
       type: "Super-Terrestres", 
       image: exoplanetImages['Super-Terrestres'], 
       total: 8, 
-      unlocked: 5,
+      unlocked: 0,
       planets: [
         { name: "Planeta K", info: "Tamaño mayor que la Tierra pero con condiciones habitables.", unlocked: true },
         { name: "Planeta L", info: "Posee múltiples continentes flotantes.", unlocked: true },
@@ -142,7 +147,7 @@ export default function Profile() {
       type: "Neptunianos", 
       image: exoplanetImages.Neptunianos, 
       total: 12, 
-      unlocked: 9,
+      unlocked: 2,
       planets: [
         { name: "Planeta S", info: "Composición principalmente de hielo y gas.", unlocked: true },
         { name: "Planeta T", info: "Tierra gaseosa con tormentas electrostáticas.", unlocked: true },
@@ -162,7 +167,7 @@ export default function Profile() {
       type: "Gigantes Gaseosos", 
       image: exoplanetImages['Gigantes Gaseosos'], 
       total: 15, 
-      unlocked: 10,
+      unlocked: 1,
       planets: [
         { name: "Planeta AE", info: "Enorme planeta con capas de gas iridiscentes.", unlocked: true },
         { name: "Planeta AF", info: "Con sistemas de coloraciones atmosféricas cambiantes.", unlocked: true },
@@ -250,7 +255,7 @@ export default function Profile() {
         >
           {/* Navegación de Pestañas */}
           <div className="flex justify-center space-x-4 mb-8">
-            {['info', 'logros', 'habilidades', 'desafíos', 'descubrimientos'].map((tab) => (
+            {['info', 'logros', 'desafíos', 'descubrimientos'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -492,7 +497,6 @@ export default function Profile() {
                                 whileHover={{ opacity: 0.8 }}
                                 initial={{ opacity: 0.5 }}
                               >
-                                <p className="text-white text-lg">???</p>
                               </motion.div>
                             )}
                           </motion.div>
