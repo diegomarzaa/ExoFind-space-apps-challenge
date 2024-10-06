@@ -5,6 +5,7 @@ import Perfil from './components/perfil-explorador';
 import Telescopio from './components/telescope';
 import PuzzleGame from './components/puzzle';
 import OrbitaPlaneta from './components/orbita_planetaria';
+import SelectorDeNiveles from './components/niveles';
 
 function App() {
     return (
@@ -17,6 +18,10 @@ function App() {
 
             <Link to="/menu">
               <button className="px-4 py-2 bg-blue-500 text-white rounded">Menu</button>
+            </Link>
+
+            <Link to="/niveles">
+                <button className="px-4 py-2 bg-blue-500 text-white rounded">Niveles</button>
             </Link>
 
             <Link to="/perfil">
@@ -39,6 +44,7 @@ function App() {
           </nav>
           <Routes>
             <Route path="/menu" element={<AppMenu />} />
+            <Route path="/niveles" element={<SelectorDeNiveles />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/telescope" element={<Telescopio />} />
             <Route path="/puzzle" element={<PuzzleGame />} />
