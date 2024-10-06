@@ -34,7 +34,7 @@ const StarMaterial = shaderMaterial(
 
 extend({ StarMaterial })
 
-const Star = ({ position, size, color, orbitAmplitude = 0.4, orbitDirection = 1, orbitSpeed = 1, extraGlow = 0 }) => {
+const Star = ({ position, size, color, orbitAmplitude = 0.4, orbitDirection = 1, orbitSpeed = 1, extraGlow = 0, perturbation = 0 }) => {
   const ref = useRef()
   const [x, y, z] = position
 
@@ -43,8 +43,14 @@ const Star = ({ position, size, color, orbitAmplitude = 0.4, orbitDirection = 1,
       ref.current.material.time += 0.1
       ref.current.material.extraGlow = extraGlow
       const directionMultiplier = orbitDirection === 1 ? 1 : -1
-      ref.current.position.x = x + Math.sin(state.clock.elapsedTime * orbitSpeed) * orbitAmplitude * directionMultiplier
-      ref.current.position.y = y + Math.cos(state.clock.elapsedTime * orbitSpeed) * orbitAmplitude * directionMultiplier
+      const time = state.clock.elapsedTime
+
+      // Add perturbation to the orbit
+      const perturbX = Math.sin(time * 2.5) * perturbation
+      const perturbY = Math.cos(time * 3.7) * perturbation
+
+      ref.current.position.x = x + (Math.sin(time * orbitSpeed) * orbitAmplitude + perturbX) * directionMultiplier
+      ref.current.position.y = y + (Math.cos(time * orbitSpeed) * orbitAmplitude + perturbY) * directionMultiplier
     }
   })
 
@@ -144,7 +150,7 @@ export default function ImagenesDiretasComponent() {
             <Star position={[-0.7, 2.5, 0]} size={0.32} color={new THREE.Color(1, 0.4, 0.4)} orbitAmplitude={-0.8} orbitDirection={-1} orbitSpeed={2}/>
             <Star position={[2.2, 1.8, 0]} size={0.38} color={new THREE.Color(0.5, 1, 0.5)} orbitAmplitude={-0.9} orbitDirection={-1} orbitSpeed={0.7}/>
             <Star position={[-1.5, -1.8, 0]} size={0.45} color={new THREE.Color(1.3, 0.8, 1)} orbitAmplitude={1.0} orbitDirection={1} orbitSpeed={1.2}/>
-            <Star position={[0, 0, 0]} size={0.6} color={new THREE.Color(1, 1, 1)} orbitAmplitude={1.2} orbitDirection={1} orbitSpeed={1} extraGlow={0.2}/>
+            <Star position={[0, 0, 0]} size={0.6} color={new THREE.Color(1, 1, 1)} orbitAmplitude={1.2} orbitDirection={1} orbitSpeed={1} extraGlow={0.2} perturbation={0.4}/>
             
             <TelescopeEffect />
   
