@@ -85,7 +85,7 @@ export default function PuzzleGame() {
           className="text-5xl md:text-6xl font-extrabold text-white"
           style={{ fontFamily: "'Orbitron', sans-serif" }}
         >
-          Puzzle Exoplanetario
+          Imágenes Directas
         </motion.h1>
 
         {/* Tablero del Puzzle */}

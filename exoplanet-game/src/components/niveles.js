@@ -77,7 +77,7 @@ export default function SelectorDeMisiones() {
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: 'backOut' }}
+          transition={{ duration: 3, ease: 'backOut' }}
           className="text-5xl md:text-6xl font-extrabold text-white mb-8"
           style={{ fontFamily: "'Orbitron', sans-serif" }}
         >
@@ -90,7 +90,7 @@ export default function SelectorDeMisiones() {
               key={nivel.tipo}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 1, delay: index * 0.1 }}
               className={`relative bg-black bg-opacity-50 p-4 rounded-lg border-2 ${
                 nivel.desbloqueado ? 'border-white' : 'border-gray-600'
               } cursor-pointer`}
@@ -132,7 +132,7 @@ export default function SelectorDeMisiones() {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 1, delay: index * 0.1 }}
                 className="flex items-center text-white"
               >
                 <CheckCircle className="w-6 h-6 text-green-400 mr-2 flex-shrink-0" />

@@ -36,8 +36,8 @@ const Star = ({ size, top, left, delay, duration, opacity }) => (
   />
 );
 
-export default function PlanetarySystem() {
-  const ORBIT_DURATION = 8; // Duration for one full orbit in seconds
+export default function BrilloOrbital() {
+  const ORBIT_DURATION = 3; // Duration for one full orbit in seconds
 
   // Generate an array of stars with random properties
   const stars = Array.from({ length: 100 }).map((_, index) => ({
@@ -51,7 +51,18 @@ export default function PlanetarySystem() {
   }));
 
   return (
-    <div className="w-full h-screen bg-black flex items-center justify-center overflow-hidden relative">
+    <div className="w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden relative">
+        {/* Título */}
+        <motion.h1
+          initial={{ y: -150, opacity: 0 }}
+          animate={{ y: -50, opacity: 1 }}
+          transition={{ duration: 1, ease: 'backOut' }}
+          className="text-5xl md:text-6xl font-extrabold text-white"
+          style={{ fontFamily: "'Orbitron', sans-serif" }}
+        >
+          Tránsito
+        </motion.h1>
+
       {/* Starry Background */}
       {stars.map((star) => (
         <Star
@@ -66,11 +77,11 @@ export default function PlanetarySystem() {
       ))}
 
       {/* Telescope POV Simulation */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="relative w-96 h-96">
         {/* Outer Frame of Telescope */}
-        <div className="w-96 h-96 rounded-full border-4 border-white-800 bg-black bg-opacity-0 flex items-center justify-center shadow-2xl">
+        <div className="w-full h-full rounded-full border-4 border-gray-800 bg-transparent flex items-center justify-center shadow-2xl">
           {/* Inner Viewfinder */}
-          <div className="w-5/6 h-5/6 rounded-full bg-green overflow-hidden">
+          <div className="w-5/6 h-5/6 rounded-full bg-black bg-opacity-50 overflow-hidden">
             {/* Planetary System Container */}
             <div className="relative w-full h-full">
               {/* Eclipse Sun Positioned on Orbit Path */}
@@ -114,7 +125,7 @@ export default function PlanetarySystem() {
               </motion.div>
 
               {/* Optional Orbit Path Visually */}
-              {/* <div className="absolute inset-0 rounded-full border border-dashed border-indigo-700" /> */}
+              <div className="absolute inset-0 rounded-full border border-dashed border-indigo-700 opacity-30" />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Settings, User, Trophy, HelpCircle, Volume2 } from 'lucide-react';
 import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
+import Logo from '../img/Logo.png';
 
 export default function ExoplanetExploration() {
   const [stars, setStars] = useState([]);
@@ -47,24 +48,38 @@ export default function ExoplanetExploration() {
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       {/* Content */}
-      <div className="z-10 text-center space-y-12 px-4">
+      <div className="z-10 text-center space-y-8 px-4 w-full max-w-6xl">
+        {/* Logo */}
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: -190, x: 255, opacity: 0.7 }}
+          transition={{ duration: 1, ease: 'backOut' }}
+          className="mb-8"
+        >
+          <img
+            src={Logo}
+            alt="Exploración de Exoplanetas Logo"
+            width={200}
+            height={200}
+            className="mx-auto"
+          />
+        </motion.div>
+
         {/* Title with White Color */}
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: 'backOut' }}
+          animate={{ y: -370, x: -35, opacity: 1 }}
+          transition={{ duration: 1, ease: 'backOut', delay: 0.2 }}
           className="text-6xl md:text-8xl font-extrabold text-white mb-12"
           style={{ fontFamily: "'Orbitron', sans-serif" }}
         >
-          Exploración de Exoplanetas
+          EXOFIND
         </motion.h1>
 
-        {/* Removed Rocket Icon Animation */}
-
-        {/* Main Action Button (Styled like Menu 1's Button) */}
+        {/* Main Action Button */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{y: -100, scale: 1.3, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <button
@@ -117,5 +132,5 @@ export default function ExoplanetExploration() {
         }
       `}</style>
     </div>
-  );
+  )
 }
