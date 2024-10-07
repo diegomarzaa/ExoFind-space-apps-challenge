@@ -2,6 +2,7 @@
   "name": "exoplanet-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://diegomarzaa.github.io/Space-Apps-Challenge/",
   "dependencies": {
     "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.9",
@@ -23,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
