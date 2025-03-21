@@ -36,7 +36,7 @@ extend({ StarMaterial })
 
 const Star = ({ position, size, color, orbitAmplitude = 0.4, orbitDirection = 1, orbitSpeed = 1, extraGlow = 0, perturbation = 0 }) => {
   const ref = useRef()
-  const [x, y, z] = position
+  const [x, y] = position
 
   useFrame((state) => {
     if (ref.current) {

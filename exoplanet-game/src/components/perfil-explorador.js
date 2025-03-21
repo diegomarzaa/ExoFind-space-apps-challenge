@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle, XCircle } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
+import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
 import terrestreImg from '../img/terrestre.png'
 import terrestreImgZ from '../img/terrestreZoom.png'
@@ -68,6 +69,8 @@ const planetImages = {
 }
 
 export default function Profile() {
+  const navigate = useNavigate();
+
   const [stars, setStars] = useState([])
   const [activeTab, setActiveTab] = useState('info')
   const [showLevelUpModal, setShowLevelUpModal] = useState(false)
@@ -197,13 +200,15 @@ export default function Profile() {
   }
 
   // Función para completar un desafío
-  const completeChallenge = (challengeName) => {
-    setDailyChallenges(prevChallenges => 
-      prevChallenges.map(challenge => 
+  const completarDesafio = (challengeName) => {
+    setDailyChallenges((prevChallenges) =>
+      prevChallenges.map((challenge) =>
         challenge.name === challengeName ? { ...challenge, completed: true } : challenge
       )
-    )
-  }
+    );
+    navigate('/niveles'); // Cambiar a la ruta correspondiente
+  };
+
 
   // Contar los desafíos pendientes
   const pendingChallenges = dailyChallenges.filter(challenge => !challenge.completed).length
@@ -390,7 +395,7 @@ export default function Profile() {
                         </motion.div>
                       ) : (
                         <button
-                          onClick={() => completeChallenge(challenge.name)}
+                          onClick={() => completarDesafio(challenge.name)}
                           className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
                         >
                           Completar
