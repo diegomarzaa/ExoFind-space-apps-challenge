@@ -7,6 +7,8 @@ import * as THREE from 'three'
 import { EffectComposer, ShaderPass } from 'three-stdlib'
 import { motion } from 'framer-motion'
 
+import BackToHome from './BackToHome';
+
 const StarMaterial = shaderMaterial(
   { time: 0, color: new THREE.Color(0.2, 0.4, 1), extraGlow: 0 },
   `
@@ -138,6 +140,8 @@ const TelescopeEffect = () => {
 export default function ImagenesDiretasComponent() {
     return (
       <div className="w-full h-screen bg-black flex justify-center items-center">
+        <BackToHome />
+        
         <div className="w-full h-full" style={{ maxWidth: '2200px' }}> {/* Adjust maxWidth as needed */}
           <Canvas>
             <OrthographicCamera makeDefault position={[0, 0, 5]} zoom={100} />

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 
+import BackToHome from './BackToHome';
+
 // Sun Component for Reusability
 const Sun = ({ className }) => (
   <div
@@ -52,6 +54,7 @@ export default function BrilloOrbital() {
 
   return (
     <div className="w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden relative">
+        <BackToHome />
         {/* Título */}
         <motion.h1
           initial={{ y: -150, opacity: 0 }}

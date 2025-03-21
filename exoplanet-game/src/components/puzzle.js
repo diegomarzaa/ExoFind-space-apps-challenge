@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { RefreshCcw } from 'lucide-react';
 import 'tailwindcss/tailwind.css'; // Asegúrate de que Tailwind CSS esté importado
 
+import BackToHome from './BackToHome';
+
 const IMAGE_URL = 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80';
 
 export default function PuzzleGame() {
@@ -69,6 +71,7 @@ export default function PuzzleGame() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
+      <BackToHome />
       {/* Campo de estrellas */}
       <Starfield />
 

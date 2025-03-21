@@ -11,6 +11,8 @@ import superterrestreImg from '../img/superterrestre.png'
 import neptunianoImg from '../img/neptunianos.png'
 import giganteGaseosoImg from '../img/gaseoso.jpg'
 
+import BackToHome from './BackToHome';
+
 // Definir URLs de imágenes para cada tipo de exoplaneta
 const exoplanetImages = {
   'Terrestres': terrestreImg,
@@ -215,6 +217,8 @@ export default function Profile() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
+      <BackToHome />
+
       {/* Starfield Background with Twinkling Effect */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
       {stars.map((star, index) => (
