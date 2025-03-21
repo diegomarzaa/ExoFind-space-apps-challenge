@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
 import terrestreImg from '../img/terrestre.png'
@@ -81,6 +81,7 @@ export default function Profile() {
     { name: "Estudio Estelar", description: "Analiza 5 estrellas diferentes", reward: "40 XP", completed: false }
   ])
 
+  // Estrellas TODO: Cambiar
   useEffect(() => {
     const generateStars = () => {
       return Array.from({ length: 300 }, () => ({
@@ -260,7 +261,7 @@ export default function Profile() {
         >
           {/* Navegación de Pestañas */}
           <div className="flex justify-center space-x-4 mb-8">
-            {['info', 'logros', 'desafíos', 'descubrimientos'].map((tab) => (
+            {['info', 'logros', 'desafios', 'descubrimientos'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -270,7 +271,7 @@ export default function Profile() {
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 {/* Badge para "Desafíos" */}
-                {tab === 'desafíos' && pendingChallenges > 0 && (
+                {tab === 'desafios' && pendingChallenges > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                     {pendingChallenges}
                   </span>
@@ -364,7 +365,7 @@ export default function Profile() {
             </div>
           )}
 
-          {activeTab === 'desafíos' && (
+          {activeTab === 'desafios' && (
             <div className="space-y-4">
               {dailyChallenges.map((challenge, index) => (
                 <AnimatePresence key={challenge.name}>
