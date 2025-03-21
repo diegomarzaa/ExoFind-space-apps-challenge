@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react'
 import AppMenu from './components/home';
-import Perfil from './components/perfil-explorador';
+import Perfil from './components/perfil';
 import Telescopio from './components/telescope';
 import PuzzleGame from './components/puzzle';
 import OrbitaPlaneta from './components/orbita_planetaria';
