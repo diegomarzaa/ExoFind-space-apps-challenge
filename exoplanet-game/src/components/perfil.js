@@ -207,7 +207,6 @@ export default function Profile() {
         challenge.name === challengeName ? { ...challenge, completed: true } : challenge
       )
     );
-    navigate('/niveles'); // Cambiar a la ruta correspondiente
   };
 
 
@@ -416,103 +415,102 @@ export default function Profile() {
           )}
 
           {activeTab === 'descubrimientos' && (
-            <div className="space-y-6">
+          <div className="max-h-[60vh] overflow-y-auto space-y-6">
               {discoveries.map((discovery, index) => (
-                <motion.div
+              <motion.div
                   key={discovery.type}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   className="flex flex-col bg-white bg-opacity-10 p-4 rounded-lg"
-                >
+              >
                   {/* Header con Imagen y Tipo */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center">
+                  <div className="flex items-center">
                       <img src={discovery.image} alt={discovery.type} className="w-20 h-20 rounded-full mr-6" />
                       <div>
-                        <h3 className="text-2xl font-bold text-white">{discovery.type}</h3>
-                        <p className="text-gray-300">{discovery.unlocked} de {discovery.total} planetas desbloqueados</p>
-                        {/* Barra de Progreso */}
-                        <div className="w-full bg-gray-700 rounded-full h-3 mt-1">
+                      <h3 className="text-2xl font-bold text-white">{discovery.type}</h3>
+                      <p className="text-gray-300">{discovery.unlocked} de {discovery.total} planetas desbloqueados</p>
+                      {/* Barra de Progreso */}
+                      <div className="w-full bg-gray-700 rounded-full h-3 mt-1">
                           <div 
-                            className="bg-green-500 h-3 rounded-full" 
-                            style={{ width: `${(discovery.unlocked / discovery.total) * 100}%` }}
+                          className="bg-green-500 h-3 rounded-full" 
+                          style={{ width: `${(discovery.unlocked / discovery.total) * 100}%` }}
                           ></div>
-                        </div>
                       </div>
-                    </div>
-                    {/* Botón para Expandir/Colapsar */}
-                    <button
+                      </div>
+                  </div>
+                  {/* Botón para Expandir/Colapsar */}
+                  <button
                       onClick={() => toggleExpansion(discovery.type)}
                       className="text-white text-xl font-semibold px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors"
-                    >
+                  >
                       {expandedDiscoveries[discovery.type] ? 'Ocultar' : 'Mostrar'}
-                    </button>
+                  </button>
                   </div>
 
-                  {/* Lista de Planetas (Expandible en Grid) */}
+                  {/* Lista de Planetas */}
                   <AnimatePresence>
-                    {expandedDiscoveries[discovery.type] && (
+                  {expandedDiscoveries[discovery.type] && (
                       <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
                       >
-                        {discovery.planets.map((planet, pIndex) => (
+                      {discovery.planets.map((planet, pIndex) => (
                           <motion.div
-                            key={planet.name}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: pIndex * 0.05 }}
-                            className="relative bg-white bg-opacity-20 rounded-lg overflow-hidden cursor-pointer"
+                          key={planet.name}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: pIndex * 0.05 }}
+                          className="relative bg-white bg-opacity-20 rounded-lg overflow-hidden cursor-pointer"
                           >
-                            {/* Imagen o Indicador de Bloqueo */}
-                            {planet.unlocked ? (
+                          {/* Imagen o indicador de bloqueo */}
+                          {planet.unlocked ? (
                               <img src={planetImages[planet.name] || 'https://via.placeholder.com/80?text=Planeta'} alt={planet.name} className="w-full h-32 object-cover" />
-                            ) : (
+                          ) : (
                               <div className="w-full h-32 bg-gray-700 flex items-center justify-center">
-                                <Lock className="w-8 h-8 text-gray-300" />
+                              <Lock className="w-8 h-8 text-gray-300" />
                               </div>
-                            )}
+                          )}
 
-                            {/* Overlay de Información en Hover */}
-                            {planet.unlocked && (
+                          {/* Overlay de información en hover */}
+                          {planet.unlocked && (
                               <motion.div
-                                className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center p-2 opacity-0 hover:opacity-100 transition-opacity duration-300"
-                                whileHover={{ opacity: 1 }}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0 }}
+                              className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center p-2 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                              whileHover={{ opacity: 1 }}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 0 }}
                               >
-                                <h4 className="text-lg font-bold text-white">{planet.name}</h4>
-                                <p className="text-sm text-gray-300 mb-2">{planet.info}</p>
-                                <button 
+                              <h4 className="text-lg font-bold text-white">{planet.name}</h4>
+                              <p className="text-sm text-gray-300 mb-2">{planet.info}</p>
+                              <button 
                                   className="px-3 py-1 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
-                                  onClick={() => alert(`Aprender más sobre ${planet.name}`)} // TODO: Implementar lógica real
-                                >
-                                  Aprender Más
-                                </button>
-                              </motion.div>
-                            )}
-
-                            {/* Indicador para Planetas Bloqueados */}
-                            {!planet.unlocked && (
-                              <motion.div
-                                className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-                                whileHover={{ opacity: 0.8 }}
-                                initial={{ opacity: 0.5 }}
+                                  onClick={() => alert(`Aprender más sobre ${planet.name}`)} // TODO: Lógica real
                               >
+                                  Aprender Más
+                              </button>
                               </motion.div>
-                            )}
+                          )}
+
+                          {/* Indicador para planetas bloqueados */}
+                          {!planet.unlocked && (
+                              <motion.div
+                              className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                              whileHover={{ opacity: 0.8 }}
+                              initial={{ opacity: 0.5 }}
+                              ></motion.div>
+                          )}
                           </motion.div>
-                        ))}
+                      ))}
                       </motion.div>
-                    )}
+                  )}
                   </AnimatePresence>
-                </motion.div>
+              </motion.div>
               ))}
-            </div>
+          </div>
           )}
 
         </motion.div>
