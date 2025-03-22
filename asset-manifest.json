@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Space-Apps-Challenge/static/css/main.bc1cc3d7.css",
-    "main.js": "/Space-Apps-Challenge/static/js/main.6c9277f7.js",
+    "main.css": "/Space-Apps-Challenge/static/css/main.83958ce2.css",
+    "main.js": "/Space-Apps-Challenge/static/js/main.018d6310.js",
     "static/js/453.e007a154.chunk.js": "/Space-Apps-Challenge/static/js/453.e007a154.chunk.js",
     "static/media/materials.png": "/Space-Apps-Challenge/static/media/materials.63e3b8414efa9643779c.png",
     "static/media/energy.png": "/Space-Apps-Challenge/static/media/energy.9cbff28f3f782914668e.png",
@@ -15,12 +15,12 @@
     "static/media/terrestre.png": "/Space-Apps-Challenge/static/media/terrestre.b89aff106bf3ebf46f2a.png",
     "static/media/pfp.png": "/Space-Apps-Challenge/static/media/pfp.5b6896b0800971a44bf3.png",
     "index.html": "/Space-Apps-Challenge/index.html",
-    "main.bc1cc3d7.css.map": "/Space-Apps-Challenge/static/css/main.bc1cc3d7.css.map",
-    "main.6c9277f7.js.map": "/Space-Apps-Challenge/static/js/main.6c9277f7.js.map",
+    "main.83958ce2.css.map": "/Space-Apps-Challenge/static/css/main.83958ce2.css.map",
+    "main.018d6310.js.map": "/Space-Apps-Challenge/static/js/main.018d6310.js.map",
     "453.e007a154.chunk.js.map": "/Space-Apps-Challenge/static/js/453.e007a154.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc1cc3d7.css",
-    "static/js/main.6c9277f7.js"
+    "static/css/main.83958ce2.css",
+    "static/js/main.018d6310.js"
   ]
 }
