@@ -1,4 +1,4 @@
-# 🚀 ExoFind
+# 🚀 ExoFind - SpaceApps Challenge
 
 ## ⚠️ ¿Qué es esto?
 
@@ -72,8 +72,8 @@ Un modelo de machine learning se adaptaría al nivel de conocimiento del usuario
 1. **Clonar el repositorio:**
 
 ```bash
-git clone https://github.com/diegomarzaa/Space-Apps-Challenge.git
-cd Space-Apps-Challenge/exoplanet-game
+git clone https://github.com/diegomarzaa/ExoFind-space-apps-challenge.git
+cd ExoFind-space-apps-challenge
 ```
 
 2. **Instalar dependencias:**
@@ -93,7 +93,6 @@ Abre [http://localhost:3000](http://localhost:3000)
 ## 📂 Estructura del Proyecto
 
 ```
-exoplanet-game/
 ├── public/              # HTML, manifest, meta
 ├── src/
 │   ├── components/      # Pantallas, minijuegos y navegación
