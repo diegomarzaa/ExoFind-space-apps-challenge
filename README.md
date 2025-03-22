@@ -1,89 +1,113 @@
-# Exoplanet Exploration - EXOFIND
+# 🚀 ExoFind
 
-## Description
+## ⚠️ ¿Qué es esto?
 
-This is an interactive web application designed to simulate the exploration of exoplanets. The user can navigate through a series of mini-games and challenges to discover planets, gather resources, and unlock new missions. The app features several modules, including puzzle games, orbital simulations, and planetary mission selectors. Each module provides a unique experience, integrating animation and dynamic interactions using React, Framer Motion, and Tailwind CSS.
+Este proyecto es un prototipo creado en solo 2 días durante el Hackathon NASA Space Apps Challenge. Fue desarrollado por estudiantes de Inteligencia Robótica en Castellón (UJI Robotics Team) como respuesta al reto educativo de la NASA centrado en exoplanetas. Su objetivo es inspirar a los niños a interesarse por el espacio y los exoplanetas mediante una experiencia interactiva y entretenida.
 
-## Features
+>Aunque implementamos muchas funcionalidades durante el hackathon, este proyecto está más cerca de una idea interactiva que de un producto final. Tras el evento lo hemos mejorado ligeramente para que se pueda probar mejor, pero sigue siendo un concepto en desarrollo.
 
-- **Exoplanet Exploration (Main Menu)**: Interactive menu where users can start their exploration journey.
-- **Mission Selector**: Choose from various missions based on the type of exoplanet. Unlock new missions by completing objectives (implemented in `niveles.js`).
-- **Orbital Simulation**: Observe and control the motion of planetary bodies in an orbital path (implemented in `orbita_planetaria.js`).
-- **Puzzle Game**: Solve image-based puzzles that represent direct imaging techniques used in exoplanet research (implemented in `puzzle.js`).
+## 🌐 Prototipo
 
-## Getting Started
+[https://diegomarzaa.github.io/Space-Apps-Challenge/](https://diegomarzaa.github.io/Space-Apps-Challenge/)
 
-### Prerequisites
+## 🎯 Nuestra misión
 
-To run this project locally, you need to have:
+Muchos niños hoy en día sueñan con ser streamers o influencers. Con este proyecto queremos cambiar eso. Queremos que vuelvan a soñar con las estrellas.
 
-- [Node.js](https://nodejs.org/en/) installed.
-- A package manager like npm or yarn.
+ExoFind busca despertar la curiosidad por la exploración espacial en los más jóvenes, aprovechando las herramientas que ya usan a diario, ya sean tablets o smartphones. En vez de alejarles de las pantallas, las utilizamos como puerta de entrada a la astronomía.
 
-### Installation
+## 📦 Tecnologías utilizadas
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/exoplanet-exploration.git
-   ```
-2. Navigate into the project directory:
-   ```bash
-   cd exoplanet-exploration
-   ```
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
-   or, if you're using Yarn:
-   ```bash
-   yarn install
-   ```
+- **React**: Interfaz de usuario
 
-### Running the App
+- **Three.js** (React Three Fiber): Visualización 3D
 
-To start the app in development mode, run:
+- **Framer Motion**: Animaciones
+
+- **Tailwind CSS**: Estilado rápido y flexible
+
+- **GitHub Pages**: Hosting gratuito
+
+## 🧭 ¿Qué incluye el juego?
+
+### Pantalla Principal
+
+Una astronauta ha activado el hiperespacio accidentalmente y ha quedado atrapada a años luz de la Tierra. Tu misión es ayudarla a volver, explorando exoplanetas y recogiendo recursos para reparar su nave.
+
+### Selección de Misiones
+
+Cada planeta representa una misión con objetivos diferentes. Todos están basados en datos reales de la NASA:
+
+-  **KEPLER 452-B** (Terrestre): Buscar alimentos y agua.
+-  **WASP-121b** (Gigante gaseoso): Recolectar combustible.
+-  **HD 3167 b** (Super-Terrestre): Extraer materiales.
+-  **HAT-P-11 b** (Neptuniano): Investigar tecnología avanzada.
+
+Cada planeta tiene su propia mecánica de minijuego, basada en un método real de detección de exoplanetas, y una ficha educativa con datos visuales.
+
+### Perfil del Usuario
+
+Tu progreso queda registrado. Desde esta sección puedes:
+
+- Ver tu **nivel**, experiencia y misiones completadas
+
+- Consultar **logros** obtenidos
+
+- Revisar exoplanetas descubiertos
+
+- Explorar **habilidades** desarrolladas (ciencia, estrategia, exploración)
+
+- Realizar **desafíos diarios** para seguir aprendiendo
+
+Además, puedes revisar cada planeta descubierto, leer descripciones únicas y aprender curiosidades.
+
+## 🤖 IA Adaptativa
+
+Una de las ideas principales del proyecto fue que ExoFind no enseñara lo mismo a todos, sino que aprendiera contigo. 
+
+Un modelo de machine learning se adaptaría al nivel de conocimiento del usuario, incrementando o reduciendo la dificultad de las preguntas y minijuegos en función del jugador.
+
+## 🛠️ Instalación Local
+
+1. **Clonar el repositorio:**
+
 ```bash
-npm run dev
+git clone https://github.com/diegomarzaa/Space-Apps-Challenge.git
+cd Space-Apps-Challenge/exoplanet-game
 ```
-or with Yarn:
+
+2. **Instalar dependencias:**
+
 ```bash
-yarn dev
+npm install
 ```
 
-The app will be accessible at `http://localhost:3000`.
+3. **Ejecutar en modo desarrollo:**
 
-### Building the App
-
-To create a production build, run:
 ```bash
-npm run build
-```
-or with Yarn:
-```bash
-yarn build
+npm start
 ```
 
-This will generate an optimized version of the app in the `build` folder.
+Abre [http://localhost:3000](http://localhost:3000)
 
-### Playing the Game
+## 📂 Estructura del Proyecto
 
-- **Main Menu**: After launching, you will see the main menu (`ExoplanetExploration` component in `01-App-menu.js`). Here, you can start the game by clicking the "JUGAR" button.
-- **Mission Selector**: Choose a mission from the available planetary types (`niveles.js`). Some missions will be locked until previous missions are completed.
-- **Orbital Simulation**: Watch the planetary transit in the orbital view (`orbita_planetaria.js`).
-- **Puzzle Game**: Test your puzzle-solving skills by completing a tile-based image puzzle (`puzzle.js`).
+```
+exoplanet-game/
+├── public/              # HTML, manifest, meta
+├── src/
+│   ├── components/      # Pantallas, minijuegos y navegación
+│   ├── img/             # Imágenes
+│   ├── plots/           # Scripts Python de visualización
+│   ├── App.js           # Enrutado principal
+│   └── index.js         # Entrada React
+├── package.json         # Dependencias y scripts
+└── tailwind.config.js   # Estilos
+```
 
-## Technologies Used
+## 🤝 Colaboración
 
-- **React**: Core framework for building the UI components.
-- **Framer Motion**: Used for animations and dynamic transitions across the app.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
-- **Lucide-react**: Icons used in the app's menu and mission selector.
+¿Ideas nuevas? ¿Errores encontrados? ¡Estás invitado a contribuir!
 
-## Credits
-
-- **Background Image**: [Unsplash](https://images.unsplash.com/photo-1462331940025-496dfbfc7564).
-- **Icons**: Provided by Lucide-react.
-
-## License
-
-This project is licensed under the MIT License.
+- Abre un issue con tu sugerencia o bug
+- Haz un fork y manda un PR

@@ -93,8 +93,8 @@ export default function ExoplanetExploration() {
           <img
             src={Logo}
             alt="Logo Exploración de Exoplanetas"
-            width={220}
-            height={220}
+            width={320}
+            height={320}
             className="mx-auto"
           />
         </motion.div>
@@ -102,7 +102,7 @@ export default function ExoplanetExploration() {
         {/* Título */}
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          animate={{ y: -35, opacity: 1 }}
           transition={{ duration: 1, ease: 'backOut', delay: 0.3 }}
           className="text-6xl md:text-8xl font-extrabold text-white mb-12"
           style={{
