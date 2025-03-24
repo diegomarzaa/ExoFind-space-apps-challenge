@@ -20,7 +20,7 @@ export default function PuzzleGame() {
   // Configurar el estado inicial con solo una pieza fuera de lugar
   useEffect(() => {
     startGame();
-  }, []);
+  }, [startGame]);
 
   const startGame = () => {
     // Estado resuelto del puzzle

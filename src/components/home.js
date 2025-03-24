@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Settings, User, Trophy, HelpCircle, Volume2 } from 'lucide-react';
+import { Settings, User, HelpCircle, Volume2 } from 'lucide-react';
 import 'tailwindcss/tailwind.css';
 import Logo from '../img/Logo.png';
 
