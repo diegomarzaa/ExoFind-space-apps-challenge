@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { RefreshCcw } from 'lucide-react';
 import 'tailwindcss/tailwind.css'; // Asegúrate de que Tailwind CSS esté importado
@@ -17,7 +17,7 @@ export default function PuzzleGame() {
   
   const borderSize = 5;
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     // Estado resuelto del puzzle
     let initialTiles = Array.from(Array(totalTiles).keys()); // [0,1,2,3,4,5,6,7,8]
 
@@ -28,7 +28,7 @@ export default function PuzzleGame() {
     setEmptyTile(initialTiles.indexOf(totalTiles - 1)); // Índice de la pieza vacía (8) es 7
     setMoves(0);
     setIsCompleted(false);
-  };
+  }, [totalTiles]);
   
   // Configurar el estado inicial con solo una pieza fuera de lugar
   useEffect(() => {
