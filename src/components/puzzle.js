@@ -17,11 +17,6 @@ export default function PuzzleGame() {
   
   const borderSize = 5;
 
-  // Configurar el estado inicial con solo una pieza fuera de lugar
-  useEffect(() => {
-    startGame();
-  }, [startGame]);
-
   const startGame = () => {
     // Estado resuelto del puzzle
     let initialTiles = Array.from(Array(totalTiles).keys()); // [0,1,2,3,4,5,6,7,8]
@@ -34,6 +29,12 @@ export default function PuzzleGame() {
     setMoves(0);
     setIsCompleted(false);
   };
+  
+  // Configurar el estado inicial con solo una pieza fuera de lugar
+  useEffect(() => {
+    startGame();
+  }, [startGame]);
+
 
   const handleTileClick = (index) => {
     if (isAdjacent(index, emptyTile)) {

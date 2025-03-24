@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useNavigate } from 'react-router-dom';
 import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
 import terrestreImg from '../img/terrestre.png'
