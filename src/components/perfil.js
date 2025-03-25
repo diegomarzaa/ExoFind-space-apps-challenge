@@ -1,6 +1,6 @@
 // TODO: Skins y naves espaciales seccion
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trophy, Star, Zap, Rocket, Book, Globe, Atom, Brain, Heart, Lock, CheckCircle } from 'lucide-react'
 import frofilepic from '../img/pfp.png'
@@ -75,7 +75,6 @@ const planetImages = {
 export default function Profile() {
   const { settings } = useSettings()
 
-  const [stars, setStars] = useState([])
   const [activeTab, setActiveTab] = useState('info')
   const [showLevelUpModal, setShowLevelUpModal] = useState(false)
   const [expandedDiscoveries, setExpandedDiscoveries] = useState({}) // Mapeo de tipos a estados de expansión
@@ -84,20 +83,6 @@ export default function Profile() {
     { name: "Diplomacia Diaria", description: "Interactúa con 2 especies alienígenas", reward: "30 XP", completed: true },
     { name: "Estudio Estelar", description: "Analiza 5 estrellas diferentes", reward: "40 XP", completed: false }
   ])
-
-  // Estrellas TODO: Cambiar
-  useEffect(() => {
-    const generateStars = () => {
-      return Array.from({ length: 300 }, () => ({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.7 + 0.3,
-        twinkleSpeed: Math.random() * 2 + 1,
-      }))
-    }
-    setStars(generateStars())
-  }, [])
 
   const achievements = [
     { name: "Primer Contacto", description: "Descubre una nueva forma de vida", icon: Star, obtained: true },

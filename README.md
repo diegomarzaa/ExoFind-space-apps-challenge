@@ -8,7 +8,7 @@ Este proyecto es un prototipo creado en solo 2 días durante el Hackathon NASA S
 
 ## 🌐 Prototipo
 
-[https://diegomarzaa.github.io/Space-Apps-Challenge/](https://diegomarzaa.github.io/Space-Apps-Challenge/)
+[www.exofind.netlify.app](**https://diegomarzaa.github.io/Space-Apps-Challenge/**)
 
 ## 🎯 Nuestra misión
 

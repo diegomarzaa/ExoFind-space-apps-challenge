@@ -87,6 +87,44 @@ export default function ExoplanetExploration() {
         </div>
       </div>
 
+      {/* GitHub Repo Link - bottom right corner, discreet */}
+      <div className="fixed bottom-4 right-4">
+        <a
+          href="https://github.com/diegomarzaa/ExoFind-space-apps-challenge"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white opacity-60 hover:opacity-100 transition-opacity duration-300 text-sm flex items-center space-x-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="w-5 h-5"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 1.5.8 1.5.6 1.5 2.2 1.1 2.7.9.1-.4.3-.8.5-1-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3 0 0 1-.3 3.4 1.2a11.7 11.7 0 0 1 6.1 0c2.4-1.5 3.4-1.2 3.4-1.2.6 1.5.2 2.7.1 3 .8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.3.3.5.7.5 1.4v2.1c0 .3.2.7.8.6A10.5 10.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <a
+            href="https://www.linkedin.com/in/diegomarza/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white opacity-60 hover:opacity-100 transition-opacity duration-300 text-sm flex items-center space-x-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17zm7.5-17h4.7v2.3h.1c.7-1.3 2.5-2.6 5.2-2.6 5.6 0 6.6 3.7 6.6 8.5V24h-5v-7.3c0-1.7 0-3.8-2.3-3.8-2.3 0-2.7 1.8-2.7 3.6V24h-5V7z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+
+      </div>
+
       {/* Estilos extra para animaciones (si se requieren) */}
       <style jsx>{`
         @keyframes bounce-slow {

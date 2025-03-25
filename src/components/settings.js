@@ -4,10 +4,7 @@ import { motion } from 'framer-motion'
 import {
   Bell,
   Volume2,
-  Cpu,
-  Sliders,
   Eye,
-  Globe,
   Palette,
   Calendar,
   Camera,
