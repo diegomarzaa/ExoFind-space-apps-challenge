@@ -11,6 +11,9 @@ import neptunianoImg from '../img/neptunianos.png'
 import giganteGaseosoImg from '../img/gaseoso.jpg'
 
 import BackToHome from './BackToHome';
+import PageWrapper from './PageWrapper'
+
+import { useSettings } from '../context/SettingsContext'
 
 // Definir URLs de imágenes para cada tipo de exoplaneta
 const exoplanetImages = {
@@ -70,6 +73,8 @@ const planetImages = {
 }
 
 export default function Profile() {
+  const { settings } = useSettings()
+
   const [stars, setStars] = useState([])
   const [activeTab, setActiveTab] = useState('info')
   const [showLevelUpModal, setShowLevelUpModal] = useState(false)
@@ -213,33 +218,8 @@ export default function Profile() {
   const pendingChallenges = dailyChallenges.filter(challenge => !challenge.completed).length
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
+    <PageWrapper>
       <BackToHome />
-
-      {/* Starfield Background with Twinkling Effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
-      {stars.map((star, index) => (
-        <motion.div
-          key={index}
-          className="absolute bg-white rounded-full"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-          }}
-          animate={{ opacity: [0.3, star.opacity, 0.3] }}
-          transition={{
-            duration: star.twinkleSpeed,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       {/* Content */}
       <div className="z-10 text-center space-y-8 px-4 w-full max-w-6xl">
@@ -286,7 +266,7 @@ export default function Profile() {
               <div className="flex items-center justify-center mb-6">
                 <img src={frofilepic} alt="Avatar" className="w-24 h-24 rounded-full border-4 border-white" />
                 <div className="ml-6 text-left">
-                  <h2 className="text-3xl font-bold">Explorador Alpha</h2>
+                  <h2 className="text-3xl font-bold">Comandante {settings.username}</h2>
                   <p className="text-xl">Rango: Capitán Estelar</p>
                   <div className="mt-2 bg-white bg-opacity-20 rounded-full h-4 w-48">
                     <div className="bg-blue-500 h-4 rounded-full" style={{ width: '75%' }}></div>
@@ -555,6 +535,6 @@ export default function Profile() {
           animation: bounce-slow 4s infinite;
         }
       `}</style>
-    </div>
+    </PageWrapper>
   )
 }

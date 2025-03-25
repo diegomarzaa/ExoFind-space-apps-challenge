@@ -9,6 +9,7 @@ import materialsImage from '../img/materials.png';
 import techImage from '../img/tech.png';
 
 import BackToHome from './BackToHome';
+import PageWrapper from './PageWrapper';
 
 // Datos de las misiones
 const niveles = [
@@ -75,15 +76,8 @@ export default function SelectorDeMisiones() {
   const [nivelSeleccionado, setNivelSeleccionado] = useState(0);
 
   return (
-    <div className="min-h-screen relative flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2811&q=80')] bg-cover bg-center">
+    <PageWrapper>
       <BackToHome />
-      
-      {/* Overlay oscuro para mejorar el contraste */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-
-      {/* Contenedor principal del contenido */}
-      <div className="z-10 text-center space-y-8 px-4 w-full max-w-6xl">
-        
         {/* Título principal */}
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
@@ -190,19 +184,20 @@ export default function SelectorDeMisiones() {
         </motion.div>
 
         {/* Iniciar misión */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`mt-8 px-8 py-3 text-white text-xl font-bold rounded-full transition-colors duration-300 ${
-            niveles[nivelSeleccionado].desbloqueado
-              ? 'bg-blue-600 hover:bg-blue-700'
-              : 'bg-gray-600 cursor-not-allowed'
-          }`}
-          disabled={!niveles[nivelSeleccionado].desbloqueado}
-        >
-          {niveles[nivelSeleccionado].desbloqueado ? 'Iniciar Misión' : 'Misión Bloqueada'}
-        </motion.button>
-      </div>
-    </div>
+        <div className="flex justify-center mt-8">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-8 py-3 text-white text-xl font-bold rounded-full transition-colors duration-300 ${
+              niveles[nivelSeleccionado].desbloqueado
+                ? 'bg-blue-600 hover:bg-blue-700'
+                : 'bg-gray-600 cursor-not-allowed'
+            }`}
+            disabled={!niveles[nivelSeleccionado].desbloqueado}
+          >
+            {niveles[nivelSeleccionado].desbloqueado ? 'Iniciar Misión' : 'Misión Bloqueada'}
+          </motion.button>
+        </div>
+    </PageWrapper>
   );
 }

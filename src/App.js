@@ -1,12 +1,19 @@
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react'
+
 import AppMenu from './components/home';
+import SelectorDeNiveles from './components/niveles';
+
 import Perfil from './components/perfil';
+import Settings from './components/settings';
+import Ayuda from './components/help';
+
 import Telescopio from './components/telescope';
 import PuzzleGame from './components/puzzle';
 import OrbitaPlaneta from './components/orbita_planetaria';
-import SelectorDeNiveles from './components/niveles';
+
+
 
 function App() {
     const [showDevMenu, setShowDevMenu] = useState(false);
@@ -46,8 +53,10 @@ function App() {
         <Routes>
           <Route path="/" element={<AppMenu />} />
           <Route path="/menu" element={<AppMenu />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/ayuda" element={<Ayuda />} />
           <Route path="/niveles" element={<SelectorDeNiveles />} />
-          <Route path="/perfil" element={<Perfil />} />
           <Route path="/telescope" element={<Telescopio />} />
           <Route path="/puzzle" element={<PuzzleGame />} />
           <Route path="/orbita" element={<OrbitaPlaneta />} />

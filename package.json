@@ -2,8 +2,9 @@
   "name": "exoplanet-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://diegomarzaa.github.io/Space-Apps-Challenge/",
+  "homepage": ".",
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.9",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,8 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-},
+    "eject": "react-scripts eject",
+    "preview": "serve -s build"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
