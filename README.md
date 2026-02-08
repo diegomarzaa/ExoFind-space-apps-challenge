@@ -1,152 +1,152 @@
-# 🚀 ExoFind - SpaceApps Challenge
+# ExoFind - SpaceApps Challenge
 
-## ⚠️ ¿Qué es esto?
+## What is this?
 
-Este proyecto es un prototipo creado en solo 2 días durante el Hackathon NASA Space Apps Challenge. Fue desarrollado por estudiantes de Inteligencia Robótica en Castellón (UJI Robotics Team) como respuesta al reto educativo de la NASA centrado en exoplanetas. Su objetivo es inspirar a los niños a interesarse por el espacio y los exoplanetas mediante una experiencia interactiva y entretenida.
+This project is a prototype created in just 2 days during the NASA Space Apps Challenge Hackathon. It was developed by Robotic Intelligence students in Castellón (UJI Robotics Team) as a response to NASA’s educational challenge focused on exoplanets. Its goal is to inspire children to become interested in space and exoplanets through an interactive and entertaining experience.
 
->Aunque implementamos muchas funcionalidades durante el hackathon, este proyecto está más cerca de una idea interactiva que de un producto final. Tras el evento ha sido mejorado ligeramente para que se pueda probar mejor, pero sigue siendo un concepto en desarrollo.
+>Although we implemented many features during the hackathon, this project is closer to an interactive idea than a final product. After the event it has been slightly improved so it can be tested better, but it is still a concept in development.
 
-## 🌐 Prototipo
+## Prototype
 
 [www.exofind.netlify.app](https://exofind.netlify.app/)
 
-## 🎯 Nuestra misión
+## Our mission
 
-Muchos niños hoy en día sueñan con ser streamers o influencers. Con este proyecto queremos cambiar eso. Queremos que vuelvan a soñar con las estrellas.
+Many children today dream of being streamers or influencers. With this project we want to change that. We want them to dream of the stars again.
 
-ExoFind busca despertar la curiosidad por la exploración espacial en los más jóvenes, aprovechando las herramientas que ya usan a diario, ya sean tablets o smartphones. En vez de alejarles de las pantallas, las utilizamos como puerta de entrada a la astronomía.
+ExoFind seeks to spark curiosity about space exploration in younger audiences, leveraging the tools they already use daily, whether tablets or smartphones. Instead of pulling them away from screens, we use them as a gateway to astronomy.
 
-## 📦 Tecnologías utilizadas
+## Technologies used
 
-- **React**: Interfaz de usuario
-- **Three.js** (React Three Fiber): Visualización 3D
-- **Framer Motion**: Animaciones
-- **Tailwind CSS**: Estilado rápido y flexible
-- **Netlify**: Hosting gratuito
+- **React**: User interface  
+- **Three.js** (React Three Fiber): 3D visualization  
+- **Framer Motion**: Animations  
+- **Tailwind CSS**: Fast and flexible styling  
+- **Netlify**: Free hosting  
 
-## 🧭 ¿Qué incluye el juego?
+## What does the game include?
 
-### Pantalla Principal
+### Main Screen
 
-Es el punto de entrada al universo de *EXOFIND*. El diseño está inspirado en una estética espacial inmersiva, con un fondo de nebulosa que refuerza el tema de exploración intergaláctica. En el centro destaca el logo del juego: un cohete estilizado rodeado por anillos rojos, simbolizando movimiento, trayectoria y aventura.
+This is the entry point to the *EXOFIND* universe. The design is inspired by an immersive space aesthetic, with a nebula background that reinforces the theme of intergalactic exploration. At the center stands the game’s logo: a stylized rocket surrounded by red rings, symbolizing movement, trajectory, and adventure.
 
-El botón **JUGAR** es el acceso directo al núcleo de la experiencia. Justo debajo se encuentran tres accesos rápidos:
+The **PLAY** button is direct access to the core of the experience. Just below are three quick accesses:
 
-- **Perfil:** donde el jugador puede gestionar su información y progreso.
-- **Ajustes:** para personalizar la experiencia (audio, controles, idioma, etc.).
-- **Ayuda:** con información básica sobre la jugabilidad, controles y objetivos.
+- **Profile:** where the player can manage their information and progress.  
+- **Settings:** to customize the experience (audio, controls, language, etc.).  
+- **Help:** with basic information about gameplay, controls, and objectives.  
 
 ![alt text](documentation/img/home.png)
 
-### Selección de Misiones
+### Mission Selection
 
-Una astronauta ha activado el hiperespacio accidentalmente y ha quedado atrapada a años luz de la Tierra. Tu misión es ayudarla a volver, explorando exoplanetas y recogiendo recursos para reparar su nave.
+An astronaut has accidentally activated hyperspace and is trapped light-years from Earth. Your mission is to help her return by exploring exoplanets and collecting resources to repair her ship.
 
-Cada planeta representa una misión con objetivos diferentes. Todos están basados en datos reales de la NASA:
+Each planet represents a mission with different objectives. All are based on real NASA data:
 
--  **KEPLER 452-B** (Terrestre): Buscar alimentos y agua.
--  **WASP-121b** (Gigante gaseoso): Recolectar combustible.
--  **HD 3167 b** (Super-Terrestre): Extraer materiales.
--  **HAT-P-11 b** (Neptuniano): Investigar tecnología avanzada.
+-  **KEPLER 452-B** (Terrestrial): Search for food and water.  
+-  **WASP-121b** (Gas giant): Collect fuel.  
+-  **HD 3167 b** (Super-Earth): Extract materials.  
+-  **HAT-P-11 b** (Neptunian): Investigate advanced technology.  
 
-Cada planeta tiene su propia mecánica de minijuego, basada en un método real de detección de exoplanetas, y una ficha educativa con datos visuales.
+Each planet has its own minigame mechanic, based on a real method of exoplanet detection, and an educational card with visual data.
 
 ![alt text](documentation/img/levels.png)
 
-### Exploración
+### Exploration
 
-Esta es la idea central del juego: controlar un cohete a través de diferentes escenarios, esquivando obstáculos y recolectando recursos mientras se avanza. El objetivo es mantener el equilibrio entre exploración y supervivencia, ya que cada recurso recolectado ayuda a extender el viaje, pero cada choque o error puede ser fatal.
+This is the central idea of the game: control a rocket through different scenarios, dodging obstacles and collecting resources while moving forward. The objective is to maintain a balance between exploration and survival, since each collected resource helps extend the journey, but each crash or mistake can be fatal.
 
 ![alt text](documentation/img/maingame.gif)
 
-### Minijuegos
+### Minigames
 
-Cada planeta tiene su propio minijuego educativo, diseñado para representar de forma interactiva un método real de detección de exoplanetas. Estos juegos no solo entretienen, sino que enseñan a los jugadores cómo los astrónomos descubren planetas más allá de nuestro sistema solar.
+Each planet has its own educational minigame, designed to represent interactively a real method of exoplanet detection. These games not only entertain, but also teach players how astronomers discover planets beyond our solar system.
 
-Algunas de las ideas iniciales son las siguientes:
+Some of the initial ideas are:
 
-- **🌑 Tránsito (KEPLER 452-B)**  
-  Simula el método de tránsito: el jugador debe detectar el paso de un planeta frente a su estrella haciendo clic justo en el momento en que disminuye la luz. Si aciertas, ganas puntos. Si fallas o tardas demasiado, pierdes vidas. La dificultad aumenta con cada acierto.
+- **Transit (KEPLER 452-B)**  
+  Simulates the transit method: the player must detect a planet passing in front of its star by clicking at the exact moment the light dims. If you succeed, you gain points. If you fail or take too long, you lose lives. The difficulty increases with each success.
 
-- **🧩 Imágenes Directas (HD 3167 b)**  
-  Un puzzle visual basado en observaciones reales de exoplanetas por imágenes directas. Las piezas están desordenadas y tienes que resolverlo con el menor número de movimientos posible.
+- **Direct Imaging (HD 3167 b)**  
+  A visual puzzle based on real observations of exoplanets through direct imaging. The pieces are scrambled and you must solve it with the fewest moves possible.
 
-- **🌀 Velocidad Radial (WASP-121b)**  
-  Representa el método de velocidad radial mediante una escena 3D animada donde estrellas y planetas orbitan. El jugador observa cómo la gravedad altera la luz y debe identificar patrones. Actualmente es más visual que interactivo, pero está pensado como base para futuros retos.
+- **Radial Velocity (WASP-121b)**  
+  Represents the radial velocity method through an animated 3D scene where stars and planets orbit. The player observes how gravity alters the light and must identify patterns. It is currently more visual than interactive, but is intended as a base for future challenges.
 
-### Perfil del Usuario
+### User Profile
 
-Tu progreso queda registrado. Desde esta sección puedes:
+Your progress is recorded. From this section you can:
 
-- Ver tu **nivel**, experiencia y misiones completadas
-- Consultar **logros** obtenidos
-- Revisar exoplanetas descubiertos
-- Explorar **habilidades** desarrolladas (ciencia, estrategia, exploración)
-- Realizar **desafíos diarios** para seguir aprendiendo
+- See your **level**, experience, and completed missions  
+- Check **achievements** earned  
+- Review discovered exoplanets  
+- Explore **skills** developed (science, strategy, exploration)  
+- Complete **daily challenges** to keep learning  
 
-Además, puedes revisar cada planeta descubierto, leer descripciones únicas y aprender curiosidades.
+Additionally, you can review each discovered planet, read unique descriptions, and learn curiosities.
 
 ![alt text](documentation/img/profile.gif)
 
-### Pestaña de Ajustes
+### Settings Tab
 
-La pestaña de ajustes permite personalizar la experiencia del usuario. Desde aquí puedes:
+The settings tab allows you to customize the user experience. From here you can:
 
-- Cambiar el idioma de la interfaz.
-- Ajustar el volumen general y habilitar/deshabilitar notificaciones.
-- Configurar la resolución de video y el modo daltonismo.
-- Personalizar el color destacado y activar el contraste alto.
-- Seleccionar categorías para búsquedas y gestionar opciones de privacidad como el historial de misiones y el inicio de sesión automático.
+- Change the interface language.  
+- Adjust the overall volume and enable/disable notifications.  
+- Configure video resolution and colorblind mode.  
+- Customize the highlight color and activate high contrast.  
+- Select categories for searches and manage privacy options such as mission history and automatic login.  
 
->No todos estos ajustes son funcionales actualmente; son simplemente una idea conceptual para ilustrar el potencial del proyecto.
+>Not all of these settings are currently functional; they are simply a conceptual idea to illustrate the project’s potential.
 
 ![alt text](documentation/img/settings.gif)
 
-## 🤖 IA Adaptativa
+## Adaptive AI
 
-Una de las ideas principales del proyecto fue que ExoFind no enseñara lo mismo a todos, sino que aprendiera contigo. 
+One of the main ideas of the project was that ExoFind would not teach the same thing to everyone, but would learn with you. 
 
-Un modelo de machine learning se adaptaría al nivel de conocimiento del usuario, incrementando o reduciendo la dificultad de las preguntas y minijuegos en función del jugador.
+A machine learning model would adapt to the user’s level of knowledge, increasing or reducing the difficulty of questions and minigames depending on the player.
 
-## 🛠️ Instalación Local
+## Local Installation
 
-1. **Clonar el repositorio:**
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/diegomarzaa/ExoFind-space-apps-challenge.git
 cd ExoFind-space-apps-challenge
 ```
 
-2. **Instalar dependencias:**
+2. **Install dependencies:**
 
 ```bash
 npm install
 ```
 
-3. **Ejecutar en modo desarrollo:**
+3. **Run in development mode:**
 
 ```bash
 npm start
 ```
 
-Abre [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000)
 
-## 📂 Estructura del Proyecto
+## Project Structure
 
 ```
 ├── public/              # HTML, manifest, meta
 ├── src/
-│   ├── components/      # Pantallas, minijuegos y navegación
-│   ├── img/             # Imágenes
-│   ├── App.js           # Enrutado principal
-│   └── index.js         # Entrada React
-├── package.json         # Dependencias y scripts
-└── tailwind.config.js   # Estilos
+│   ├── components/      # Screens, minigames and navigation
+│   ├── img/             # Images
+│   ├── App.js           # Main routing
+│   └── index.js         # React entry
+├── package.json         # Dependencies and scripts
+└── tailwind.config.js   # Styles
 ```
 
-## 🤝 Colaboración
+## Collaboration
 
-¿Ideas nuevas? ¿Errores encontrados? ¡Estás invitado a contribuir!
+New ideas? Bugs found? You’re invited to contribute!
 
-- Abre un issue con tu sugerencia o bug
-- Haz un fork y manda un PR
+- Open an issue with your suggestion or bug  
+- Fork it and send a PR
